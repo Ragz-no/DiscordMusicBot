@@ -16,7 +16,8 @@ client.once("ready", () => {
 
 
 client.on("message", message => {
-   
+    if (!message.content.startsWith(prefix) || !message.guild) return; 
+
     let args = message.content.substring(prefix.length).split(" ");
 
     switch (args[0]) {
@@ -27,6 +28,23 @@ client.on("message", message => {
         case "github":
             message.channel.send("https://github.com/Ragz-no");   
             break;
+             
+        case "creator": 
+            message.channel.send("My creator is Ragz");
+            break;
+        
+        case "commands":
+            message.channel.send("Her er mine kommandoer");
+            break;
+
+        case "clear":
+            if(!args[1]) return message.reply("Error plis definer andre tall, som f.eks !clear 5")  
+            message.channel.bulkDelete(args[1]);
+            break;
+
+        default:
+            message.reply("Invalid kommando, bruk !commands for å se alle kommandoer.")    
+
     }
         // må lage en case for kommandoer som ikke finnes
 });
