@@ -46,7 +46,7 @@ client.on("message", message => {
             message.reply("Invalid kommando, bruk !commands for å se alle kommandoer.")    
 
     }
-        // må lage en case for kommandoer som ikke finnes
+        
 });
 
 
