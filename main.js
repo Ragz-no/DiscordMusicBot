@@ -1,29 +1,29 @@
-const Discord = require("discord.js");
-const config = require("./config.json");
+const Discord = require("discord.js"); // Discord.js
+const config = require("./config.json"); // Config file
 
 const client = new Discord.Client({ intents: [
-    "GUILDS", 
-    "GUILD_MESSAGES", 
-    "DIRECT_MESSAGES"
+    "GUILDS",  // guilds
+    "GUILD_MESSAGES", // guild messages
+    "DIRECT_MESSAGES" // direct messages
     ] });
     
-const prefix = "!";
+const prefix = "!"; // prefix for commands
 
 
 client.once("ready", () => {
-    console.log("Ragz on the beat er pålogget");
+    console.log("Ragz on the beat er pålogget"); // when the bot is ready
 });
 
 
-client.on("message", message => {
-    if (!message.content.startsWith(prefix) || !message.guild) return; 
+client.on("message", message => { // when a message is sent
+    if (!message.content.startsWith(prefix) || !message.guild) return;  // if the message doesn't start with the prefix or if the message is not in a guild
 
-    let args = message.content.substring(prefix.length).split(" ");
+    let args = message.content.substring(prefix.length).split(" "); // get the arguments
 
-    switch (args[0]) {
-        case "ping":
-            message.channel.send("pong");
-            break;
+    switch (args[0]) { // switch the command
+        case "ping": // ping command
+            message.channel.send("pong"); // send a message
+            break; // break the switch
         
         case "github":
             message.channel.send("https://github.com/Ragz-no");   
@@ -52,5 +52,5 @@ client.on("message", message => {
 
 
 
-
+// gjemmer token i en fil for å unngå at den blir vist på github
 client.login(config.token);
